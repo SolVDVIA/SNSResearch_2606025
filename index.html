@@ -57,6 +57,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 
 .modal-close{position:absolute;top:28px;right:28px;background:#222;border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .15s}
 .modal-close:hover{background:#444}
+.modal-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1001;transition:background .15s;backdrop-filter:blur(4px)}
+.modal-nav:hover{background:rgba(255,255,255,.3)}
+.modal-nav-prev{left:12px}
+.modal-nav-next{right:12px}
 
 .modal-brand-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #222}
 .modal-icon{font-size:24px}
@@ -466,11 +470,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 
 <!-- MODAL -->
 <div class="modal-backdrop" id="modal">
+  <button class="modal-nav modal-nav-prev" onclick="navModal(-1)">&#8592;</button>
   <div class="modal-box" style="position:relative">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-left"></div>
     <div class="modal-right"></div>
   </div>
+  <button class="modal-nav modal-nav-next" onclick="navModal(1)">&#8594;</button>
 </div>
 
 <script>
@@ -704,14 +710,17 @@ const BRANDS_DATA = [
   summary:'플라워 더마 스킨케어. 로즈 PDRN 기반 에센셜 트리오(클렌징 밤·마스크 클렌저·미스트 토너) 중심. 핑크·플로럴 감성 + 유머 + 파운더 스토리 + UGC로 K-뷰티 글로벌 포지셔닝 초기 단계.',
   w6h:[['누가(Who)','GARDENY 가드니 브랜드가 — 20–30대 피부 케어 입문자·K-뷰티 글로벌 소비자를 위한 플라워 더마 스킨케어 브랜드'],['무엇(What)','Rose PDRN 3종 트리오 — 클렌징 밤·마스크 클렌저·미스트 토너'],['언제(When)','모닝·나이트 일상 루틴, 봄→여름 시즌 연계'],['어디서(Where)','인스타그램 피드+릴스, 일본 협업으로 아시아 확장 중'],['왜(Why)',"스킨케어를 리추얼로 — '매일 꽃피는 나'라는 자기긍정 감성 전달"],['어떻게(How)','감성 카피 + 파운더 스토리 + UGC 리포스트 + 성분 교육 혼합']],
   keywords:['부드러움','꽃향기','핑크감성','리추얼','자기긍정','코지','미니멀','봄여름','식물성'],
-  posts:[['DPirm2UAU6t',3,14,1759912850,'📌 OUR WORLD — In our world, every blossom is one of a kind, just like you. GARDENY is not just skincare.'],['DPdl6DsAYlk',3,14,1759742089,'📌 OUR FORMULA — Rose PDRN Essential Trio: 01 Reset Cleansing Balm / 02 Refresh Mask Cleanser / 03 Nourish Mist Toner'],['DOyDZZMAeAS',3,2,1758281155,'📌 OUR PHILOSOPHY — Inspired by flowers, we create skincare that feels effortless, gentle, and true to you.'],['DYD2UfBAQvE',3,0,1778205633,'Veiled in softness. Our Rose PDRN trio for skin that feels clean, calm, and hydrated.'],['DX-s015iSGI',3,1,1778032901,'In the heart of spring, we are already getting ready for summer. Keeping skin fresh and hydrated, with rose.'],['DX5jIJaDnP-',3,0,1777860025,'The essentials we keep closest.'],['DX2eMiuyK8j',3,0,1777687175,'Meet the Rose PDRN Essential Trio.'],['DXx00vfgXLC',3,1,1777514324,'The scent of the morning. The softness of petals.'],['DXnhs3_iIVT',3,0,1777341474,'Simple, soft, and worth looking forward to.'],['DXf17o9AeiN',3,0,1777168623,'Gentle rituals, every day.'],['DXapsePgXgW',3,2,1776995773,'Rose PDRN — because your skin deserves it.'],['DXNxomMGqD0',3,1,1776822922,'Effortlessly you.'],['DXIoG_PAX7O',3,0,1776650072,'Skincare that feels like home.'],['DXD3p7rCifY',3,0,1776477221,'Clean skin, clear mind.'],['DW7wKv7DblX',3,1,1776304371,'Your daily bloom.'],['DWnT3F9AWQd',3,0,1776131520,'Soft days ahead.'],['DWXtAu1k4lv',3,0,1775958670,'The trio that started it all.'],['DWSEkkSiWU-',3,1,1775785820,'Every petal tells a story.'],['DWQT6TICrum',3,0,1775612969,'Rose PDRN daily ritual.']]
+  posts:[['DZ96X-mn5Oa',3,0,1782301398,'가드니 신상 세럼 입고 🥛'],['DZ92Mdzpn3N',3,3,1782299243,'Something really good is coming 🌹🥛\U0001fae2'],['DOyDZZMAeAS',3,2,1758281155,'OUR PHILOSOPHY'],['DPirm2UAU6t',3,14,1759912850,'OUR WORLD'],['DXD3p7rCifY',3,2,1776058876,'A little touch of spring, with GARDENY🌸'],['DO8We-fAan4',3,0,1758626830,'꽃에서 온 스킨케어, GARDENY 🌸'],['DR_4-W5j3dV',80,4,1765188072,'#광고 @gardeny_official'],['DXapsePgXgW',3,0,1776823298,'Water from a rose 🌹'],['DXf17o9AeiN',3,0,1776997561,"she's fine. the cleansing balm isn't."],['DWSjY4_gYPs',3,0,1774404056,'Our core: Rose'],['DWSEkkSiWU-',106,17,1774388106,'GARDENY is all about gentle care and pure pleasure 🌷'],['DWNZxh5kVfL',3,1,1774231242,'🩰🎀 moodboard lately'],['DX2eMiuyK8j',3,4,1777757024,'This @gardenyskin Korean skincare set made my routine feel exciting again 🌸💞'],['DXNxomMGqD0',3,2,1776391256,'Spritz, spritz.'],['DX-s015iSGI',3,1,1778032901,'In the heart of spring, we are already getting ready for summer.'],['DWpulRggVWd',3,0,1775181676,'A quiet part of the everyday ritual.'],['DRZDzJMgV0K',3,0,1763885343,'Flower Skincare, GARDENY'],['DVKwP98Dexc',62,10,1771995094,'the testimonial I promised! (see previous reel)'],['DVKdEO7mO_g',3,0,1771984822,'Rose on skin.'],['DWP-VoXCb0-',3,0,1774317564,'Meet our Rose PDRN Mask Cleanser'],['DV7YK0XDyFa',3,2,1773626421,'💗'],['DRuIolUgVR2',3,1,1764592189,'Flower Skincare, GARDENY 🌸'],['DWAhwjoiMX0',3,0,1773799221,'GARDENY girls get it'],['DVnGgANGrGU',3,1,1772946089,'Happy IWD 🌹'],['DTKyCNNgffS',3,0,1767700848,'Keywords for a glowing 2026 ✨'],['DWnT3F9AWQd',3,2,1775101126,"@karyrommm 's it girl pink skincare with rose pdrn 🌹\U0001fae7"],['DPdl6DsAYlk',3,14,1759742089,'OUR FORMULA'],['DXIoG_PAX7O',3,0,1776218495,'Spring, spring, spring.'],['DU9lGaGmFOY',3,1,1771552827,'This is what a good cleanse should feel like.'],['DT-HeZKAVtO',3,4,1769423365,'Good skin grows from a good cleanse.'],['DWFrZu7Afwt',3,2,1773972049,'🛁🌹'],['DWxc51cArZI',3,0,1775440843,'🌹🌿'],['DYD2UfBAQvE',3,0,1778205633,'Veiled in softness.'],['DXsrI8YDBss',3,3,1777428018,'👑💅🏻'],['DX5jIJaDnP-',3,0,1777860025,'The essentials we keep closest \U0001faf6🏻'],['DXnhs3_iIVT',3,1,1777255327,'bedazzled hallelujah ✨'],['DXx00vfgXLC',3,2,1777600886,'Not just inspired by flowers.'],['DXVf-AsjaPY',3,0,1776650410,'Where skincare begins.'],['DW7wKv7DblX',3,1,1775786507,'Handcraft Archive 01 : Aluminum Embossing'],['DWklC0HCNCD',3,1,1775008903,'Rose science, refined.'],['DWfbSn7j7y9',3,0,1774836018,'🎀 A soft start to your skincare ritual'],['DWXtAu1k4lv',3,0,1774576893,'Friday pouch dump🌸✨'],['DWQT6TICrum',3,8,1774328964,'soft pink paradise 🌸 girly aesthetic slow morning cozy days'],['DVxFAeOE3jn',3,1,1773280831,'가드니 쇼핑백이 나왔어요!'],['DVr7euSjKjM',3,0,1773108082,'Tuesday = work, then ballet 🩰'],['DVhoRcljzjT',3,0,1772762449,'Meet the Rose PDRN Mist Toner 🌹'],['DVceoqBj2Zy',3,0,1772589624,'Your daily routine, in three steps.'],['DVXVCfbD9jp',3,0,1772416821,'The four ingredients we built this around.']]
 },
 ];
 </script>
 
 <script>
 
+let _currentModalIdx = 0;
+
 function openModal(idx) {
+  _currentModalIdx = idx;
   const b = BRANDS_DATA[idx];
   const modal = document.getElementById('modal');
 
@@ -776,6 +785,19 @@ function closeModal() {
   document.body.style.overflow = '';
   modal.querySelector('.modal-right').innerHTML = '';
 }
+
+function navModal(dir) {
+  const next = (_currentModalIdx + dir + BRANDS_DATA.length) % BRANDS_DATA.length;
+  openModal(next);
+}
+
+document.addEventListener('keydown', function(e) {
+  const modal = document.getElementById('modal');
+  if (!modal.classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') navModal(-1);
+  else if (e.key === 'ArrowRight') navModal(1);
+  else if (e.key === 'Escape') closeModal();
+});
 
 function fmtNum(n) {
   if (n >= 1000000) return (n/1000000).toFixed(1) + 'M';

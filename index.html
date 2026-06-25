@@ -47,8 +47,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1000;overflow-y:auto;align-items:flex-start;justify-content:center;padding:20px}
 .modal-backdrop.open{display:flex}
 
-.modal-box{background:#fff;border-radius:12px;width:100%;max-width:1400px;display:flex;gap:0;overflow:hidden;min-height:80vh}
-.modal-left{width:320px;flex-shrink:0;background:#0f0f0f;color:#fff;padding:24px;overflow-y:auto}
+.modal-box{background:#fff;border-radius:12px;width:100%;max-width:1400px;display:flex;gap:0;overflow:hidden;height:calc(100vh - 40px)}
+.modal-left{width:320px;flex-shrink:0;background:#0f0f0f;color:#fff;padding:24px;overflow-y:auto;position:sticky;top:0;align-self:flex-start;height:100%}
 .modal-left::-webkit-scrollbar{width:4px}
 .modal-left::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
 .modal-right{flex:1;overflow-y:auto;background:#eee;padding:12px}
@@ -803,6 +803,10 @@ function openModal(idx) {
 
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+  // 스크롤 초기화
+  modal.querySelector('.modal-right').scrollTop = 0;
+  modal.querySelector('.modal-left').scrollTop = 0;
+  modal.scrollTop = 0;
 }
 
 function closeModal() {

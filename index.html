@@ -805,10 +805,9 @@ function openModal(idx) {
   // right panel posts
   const right = modal.querySelector('.modal-right');
   const postsHtml = b.posts.map((p, i) => {
-    const [code, likes, comments, ts, cap] = p;
+    const [code, mtype, likes, ts, cap] = p;
     const date = new Date(ts * 1000).toLocaleDateString('ko-KR', {year:'numeric',month:'2-digit',day:'2-digit'}).replace(/\. /g,'.').replace(/\.$/,'');
     const likesF = fmtNum(likes);
-    const cmtF = fmtNum(comments);
     const capE = cap.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     return `<div class="card">
       <div class="embed-wrap">
@@ -816,7 +815,7 @@ function openModal(idx) {
         <iframe src="https://www.instagram.com/p/${code}/embed/" scrolling="no" loading="${i < 6 ? 'eager' : 'lazy'}" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
       </div>
       <div class="card-body">
-        <div class="card-meta"><span class="card-date">${date}</span><span class="card-stats-row"><span>❤️ ${likesF}</span><span>💬 ${cmtF}</span></span></div>
+        <div class="card-meta"><span class="card-date">${date}</span><span class="card-stats-row"><span>❤️ ${likesF}</span></span></div>
         <div class="cap">${capE}</div>
       </div>
     </div>`;

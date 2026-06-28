@@ -31,7 +31,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 
 .card-top{display:flex;align-items:center;gap:8px}
 .card-icon{font-size:18px;line-height:1;flex-shrink:0}
-.card-profile-pic{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid var(--accent,#ddd);background:#eee}
+.card-profile-pic{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#eee;box-shadow:0 2px 6px rgba(0,0,0,.10)}
 .card-name{font-size:12px;font-weight:700;color:#111;line-height:1.3}
 .card-handle{font-size:9px;color:#888;margin-top:2px}
 .card-stats-row{display:flex;gap:8px}
@@ -64,8 +64,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .modal-nav-next{right:-20px}
 
 .modal-brand-header{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #e8e8e8}
-.modal-profile-pic{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);background:#eee;flex-shrink:0}
-.modal-profile-pic-placeholder{width:52px;height:52px;border-radius:50%;background:#f0f0f0;border:2px solid #ddd;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.modal-profile-pic{width:52px;height:52px;border-radius:50%;object-fit:cover;background:#eee;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.10)}
+.modal-profile-pic-placeholder{width:52px;height:52px;border-radius:50%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.10)}
 .modal-brand-info{display:flex;align-items:center;gap:10px}
 .modal-brand-name{font-size:16px;font-weight:700;color:#111;text-decoration:none;cursor:pointer}
 .modal-brand-name:hover{text-decoration:underline}
@@ -172,7 +172,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>rhode 브랜드가 — 20–35대 글로우 스킨 지향 뷰티 소비자·Hailey Bieber 팬덤을 위한 글레이징 뷰티 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>Peptide Lip Treatment·Glazing Milk·Pocket Bronze 등 스킨케어-메이크업 하이브리드</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>데일리 글레이징 루틴 + 시즌 컬렉션(Summer '26) 드롭</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>Rhodeskin.com D2C 독점 → 아마존·세포라 등 채널 확장, 글로벌 팝업 투어</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>'glazed donut skin' — 자연스러운 빛광 피부를 일상에서 쉽게</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>셀럽 착용샷 + UGC + 성분 교육 캐러셀 + 팝업 이벤트 + 제품 드롭 카운트다운</div></div>
 </div><div class="brand-card" style="--accent:#ff6b35;--light:#fff3ee" onclick="openModal(1)">
   <div class="card-top">
-    <span class="card-icon">🐘</span>
+    <img class="card-profile-pic" src="profiles/drunkelephant.jpg" alt="Drunk Elephant" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🐘</span>
     <div>
       <div class="card-name">Drunk Elephant</div>
       <div class="card-handle">@drunkelephant</div>
@@ -232,7 +232,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>Typology Paris 브랜드가 — 클린뷰티·미니멀리즘을 추구하는 프랑스어권 + 글로벌 여성을 위한 성분 중심 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>선케어 BiPhase SPF30, 브론징 컨센트레이트, 립오일 신제품 위주</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>여름 시즌 집중 런칭, 주기적 신제품 공개(NOUVEAU 시리즈)</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>인스타그램 중심, 프랑스 본토 코어 + 글로벌 확장</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>성분 투명성과 미니멀 포뮬러로 진정성 있는 스킨케어 제공</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>성분 코드넘버 시스템 + 시즌 비주얼 + 심플 카피 + 불어/영어 병기</div></div>
 </div><div class="brand-card" style="--accent:#2c5f2e;--light:#e8f4e8" onclick="openModal(5)">
   <div class="card-top">
-    <span class="card-icon">🐌</span>
+    <img class="card-profile-pic" src="profiles/cosrx.jpg" alt="COSRX" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🐌</span>
     <div>
       <div class="card-name">COSRX</div>
       <div class="card-handle">@cosrx</div>
@@ -307,7 +307,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>celimax 브랜드가 — 모공·다크스팟·주름 고민을 가진 미국 시장 20–40대 여성을 위한 클리니컬 K-뷰티 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>Retinal Shot 세럼·부스터·듀얼크림 + JIWOOGAE 씨카 쿨링 마스크</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>아마존 프라임데이·Ulta 세일 시즌, 신제품 런칭 주기</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>Ulta Beauty(오프라인) + Amazon(온라인), 미국 시장 집중</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>레티날 기반 과학적 접근으로 피부 고민을 실질적으로 해결</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>성분/효능 교육 + 레이어링 가이드 + 채널 세일 CTA + 커뮤니티 패널</div></div>
 </div><div class="brand-card" style="--accent:#c0392b;--light:#fdecea" onclick="openModal(10)">
   <div class="card-top">
-    <span class="card-icon">🌸</span>
+    <img class="card-profile-pic" src="profiles/missha.official.jpg" alt="MISSHA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🌸</span>
     <div>
       <div class="card-name">MISSHA</div>
       <div class="card-handle">@missha.official</div>
@@ -337,7 +337,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>Dr. Althea 브랜드가 — 안티에이징·피부결 개선을 원하는 글로벌 25-40대를 위한 피부과 처방 콘셉트 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>레티놀 세럼, 필링 패드, 클리니컬 스킨케어</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>나이트 루틴, 안티에이징 케어 시즌</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>글로벌 이커머스 + 인스타그램</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>피부과급 성분으로 집에서 클리니컬 케어</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>클리니컬 비주얼 + 비포어/애프터 + 성분 교육</div></div>
 </div><div class="brand-card" style="--accent:#e8527a;--light:#fce8ef" onclick="openModal(12)">
   <div class="card-top">
-    <span class="card-icon">🧬</span>
+    <img class="card-profile-pic" src="profiles/biodance_official.jpg" alt="BIODANCE" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🧬</span>
     <div>
       <div class="card-name">BIODANCE</div>
       <div class="card-handle">@biodance_official</div>
@@ -352,7 +352,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>BIODANCE 브랜드가 — 안티에이징·탄력 개선을 원하는 글로벌 소비자를 위한 바이오 콜라겐 마스크 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>Bio-Collagen 마스크, 세럼, 크림</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>주 2-3회 집중 케어, 스페셜 케어 루틴</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>Amazon·글로벌 이커머스 + 인스타그램</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>바이오 콜라겐 기술로 탄력·주름 개선</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>비주얼 임팩트 마스크 착용 영상 + 과학적 설명</div></div>
 </div><div class="brand-card" style="--accent:#e67e22;--light:#fef5e7" onclick="openModal(13)">
   <div class="card-top">
-    <span class="card-icon">🍊</span>
+    <img class="card-profile-pic" src="profiles/arencia_global.jpg" alt="ARENCIA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🍊</span>
     <div>
       <div class="card-name">ARENCIA</div>
       <div class="card-handle">@arencia_global</div>
@@ -367,7 +367,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>ARENCIA 브랜드가 — 글로우·미백 케어를 원하는 글로벌 소비자를 위한 비타민C 기반 K-뷰티 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>비타민C 세럼, 글로우 크림, 토너</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>아침 루틴, 글로우 케어</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>인스타그램 글로벌</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>비타민C로 즉각적인 글로우·미백 효과</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>컬러풀 비주얼 + 성분 교육 + 글로우 비포어/애프터</div></div>
 </div><div class="brand-card" style="--accent:#6b3fa0;--light:#f3eefa" onclick="openModal(14)">
   <div class="card-top">
-    <span class="card-icon">🫐</span>
+    <img class="card-profile-pic" src="profiles/eqqualberry_global.jpg" alt="EQQUAL" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🫐</span>
     <div>
       <div class="card-name">EQQUAL</div>
       <div class="card-handle">@eqqualberry_global</div>
@@ -442,7 +442,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>성분에디터 브랜드가 — 성분에 관심 있는 스킨케어 고관여 소비자를 위한 성분 분석 채널</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>성분 분석, 제품 비교, 루틴 가이드</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>신제품 출시·성분 트렌드 이슈 시</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>인스타그램 교육 콘텐츠 채널</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>복잡한 성분 정보를 쉽게 전달</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>인포그래픽 + 비교 분석 캐러셀 + 전문가 코멘트</div></div>
 </div><div class="brand-card" style="--accent:#3a6b35;--light:#f0f7ef" onclick="openModal(19)">
   <div class="card-top">
-    <span class="card-icon">🍵</span>
+    <img class="card-profile-pic" src="profiles/narka_you.jpg" alt="NARKA 나르카" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🍵</span>
     <div>
       <div class="card-name">NARKA 나르카</div>
       <div class="card-handle">@narka_you</div>
@@ -457,7 +457,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>NARKA 나르카가 — 두피 유분·열감·잔머리 고민 있는 20–35대 여성 (국내+글로벌)</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>말차-PDRN 팩 샴푸, 프레시 베일 노세범 헤어 미스트, 슈퍼픽스 슬릭 스타일링 컬렉션</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>여름 두피 케어 시즌, 올리브영 세일, 런칭 카운트다운 시리즈</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>올리브영(국내) + Ulta Beauty(미국) + 공식몰 D2C</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>여름 두피 열감·유분·잔머리 문제를 쿨링+픽싱으로 한 번에 해결</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>비하인드 스토리 릴스 + 사전체험단 모집 + 크리에이터 콜라보 + 카운트다운 캠페인</div></div>
 </div><div class="brand-card" style="--accent:#1a1a1a;--light:#f5f5f5" onclick="openModal(20)">
   <div class="card-top">
-    <span class="card-icon">🖤</span>
+    <img class="card-profile-pic" src="profiles/yunjac.official.jpg" alt="YUNJAC 연작" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🖤</span>
     <div>
       <div class="card-name">YUNJAC 연작</div>
       <div class="card-handle">@yunjac.official</div>
@@ -472,7 +472,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>YUNJAC 연작이 — 피부 바탕·베이스 메이크업을 원하는 한국 여성 소비자(20–35세)를 위한 아모레퍼시픽 럭셔리 더마 메이크업 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>사일런트 벨벳 프렙 크림, 베이스 메이크업 라인 — 화잘먹 피부결 완성</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>메이크업 전 프렙 단계, 여름 번들거림 관리 루틴</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>무신사·신세계 온라인 + 인스타그램 피드</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>쌀 유래 성분으로 수분결 충전 → 메이크업 지속력 향상</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>블랙 미니멀 비주얼 + 성분 스토리 + 채널 단독 혜택 이벤트</div></div>
 </div><div class="brand-card" style="--accent:#1565c0;--light:#e3f2fd" onclick="openModal(21)">
   <div class="card-top">
-    <span class="card-icon">🩺</span>
+    <img class="card-profile-pic" src="profiles/aestura_uk.jpg" alt="AESTURA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🩺</span>
     <div>
       <div class="card-name">AESTURA</div>
       <div class="card-handle">@aestura_uk</div>
@@ -536,7 +536,7 @@ const BRANDS_DATA = [
 {
   name:'Drunk Elephant',handle:'@drunkelephant',icon:'🐘',
   accent:'#ff6b35',light:'#fff3ee',
-  profile_pic:'',
+  profile_pic:'profiles/drunkelephant.jpg',
   followers:1967345,followers_fmt:'2.0M',
   following:0,following_fmt:'-',
   total_posts:149,total_posts_fmt:'149',
@@ -592,7 +592,7 @@ const BRANDS_DATA = [
 {
   name:'COSRX',handle:'@cosrx',icon:'🐌',
   accent:'#2c5f2e',light:'#e8f4e8',
-  profile_pic:'',
+  profile_pic:'profiles/cosrx.jpg',
   followers:771674,followers_fmt:'771.7K',
   following:0,following_fmt:'-',
   total_posts:1837,total_posts_fmt:'1.8K',
@@ -662,7 +662,7 @@ const BRANDS_DATA = [
 {
   name:'MISSHA',handle:'@missha.official',icon:'🌸',
   accent:'#c0392b',light:'#fdecea',
-  profile_pic:'',
+  profile_pic:'profiles/missha.official.jpg',
   followers:355092,followers_fmt:'355.1K',
   following:0,following_fmt:'-',
   total_posts:3194,total_posts_fmt:'3.2K',
@@ -690,7 +690,7 @@ const BRANDS_DATA = [
 {
   name:'BIODANCE',handle:'@biodance_official',icon:'🧬',
   accent:'#e8527a',light:'#fce8ef',
-  profile_pic:'',
+  profile_pic:'profiles/biodance_official.jpg',
   followers:303646,followers_fmt:'303.6K',
   following:0,following_fmt:'-',
   total_posts:412,total_posts_fmt:'412',
@@ -704,7 +704,7 @@ const BRANDS_DATA = [
 {
   name:'ARENCIA',handle:'@arencia_global',icon:'🍊',
   accent:'#e67e22',light:'#fef5e7',
-  profile_pic:'',
+  profile_pic:'profiles/arencia_global.jpg',
   followers:270751,followers_fmt:'270.8K',
   following:0,following_fmt:'-',
   total_posts:239,total_posts_fmt:'239',
@@ -718,7 +718,7 @@ const BRANDS_DATA = [
 {
   name:'EQQUAL',handle:'@eqqualberry_global',icon:'🫐',
   accent:'#6b3fa0',light:'#f3eefa',
-  profile_pic:'',
+  profile_pic:'profiles/eqqualberry_global.jpg',
   followers:171105,followers_fmt:'171.1K',
   following:0,following_fmt:'-',
   total_posts:147,total_posts_fmt:'147',
@@ -788,7 +788,7 @@ const BRANDS_DATA = [
 {
   name:'NARKA 나르카',handle:'@narka_you',icon:'🍵',
   accent:'#3a6b35',light:'#f0f7ef',
-  profile_pic:'',
+  profile_pic:'profiles/narka_you.jpg',
   followers:30587,followers_fmt:'30.6K',
   following:2,following_fmt:'2',
   total_posts:473,total_posts_fmt:'473',
@@ -802,7 +802,7 @@ const BRANDS_DATA = [
 {
   name:'YUNJAC 연작',handle:'@yunjac.official',icon:'🖤',
   accent:'#1a1a1a',light:'#f5f5f5',
-  profile_pic:'',
+  profile_pic:'profiles/yunjac.official.jpg',
   followers:29053,followers_fmt:'29.1K',
   following:3,following_fmt:'3',
   total_posts:940,total_posts_fmt:'940',
@@ -816,7 +816,7 @@ const BRANDS_DATA = [
 {
   name:'AESTURA',handle:'@aestura_uk',icon:'🩺',
   accent:'#1565c0',light:'#e3f2fd',
-  profile_pic:'',
+  profile_pic:'profiles/aestura_uk.jpg',
   followers:5340,followers_fmt:'5.3K',
   following:0,following_fmt:'-',
   total_posts:160,total_posts_fmt:'160',

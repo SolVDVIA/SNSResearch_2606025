@@ -30,7 +30,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .brand-card:hover{border-color:var(--accent);background:#fafafa}
 
 .card-top{display:flex;align-items:center;gap:8px}
-.card-icon{font-size:18px;line-height:1}
+.card-icon{font-size:18px;line-height:1;flex-shrink:0}
+.card-profile-pic{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid var(--accent,#ddd);background:#eee}
 .card-name{font-size:12px;font-weight:700;color:#111;line-height:1.3}
 .card-handle{font-size:9px;color:#888;margin-top:2px}
 .card-stats-row{display:flex;gap:8px}
@@ -48,44 +49,44 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .modal-backdrop.open{display:flex}
 
 .modal-box{background:#fff;border-radius:12px;width:100%;max-width:1400px;display:flex;gap:0;overflow:hidden;height:calc(100vh - 40px)}
-.modal-left{width:320px;flex-shrink:0;background:#0f0f0f;color:#fff;padding:24px;overflow-y:auto;position:sticky;top:0;align-self:flex-start;height:100%}
+.modal-left{width:320px;flex-shrink:0;background:#fff;color:#111;padding:24px;overflow-y:auto;position:sticky;top:0;align-self:flex-start;height:100%;border-right:1px solid #e5e5e5}
 .modal-left::-webkit-scrollbar{width:4px}
-.modal-left::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
-.modal-right{flex:1;overflow-y:auto;background:#eee;padding:12px}
+.modal-left::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+.modal-right{flex:1;overflow-y:auto;background:#f2f2f2;padding:12px}
 .modal-right::-webkit-scrollbar{width:5px}
 .modal-right::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
 
-.modal-close{position:absolute;top:28px;right:28px;background:#222;border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .15s}
-.modal-close:hover{background:#444}
-.modal-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.2);color:#fff;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;transition:background .15s;backdrop-filter:blur(4px)}
-.modal-nav:hover{background:rgba(0,0,0,.75)}
+.modal-close{position:absolute;top:28px;right:28px;background:#f0f0f0;border:1px solid #ddd;color:#333;width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .15s}
+.modal-close:hover{background:#e0e0e0}
+.modal-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.15);color:#333;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;transition:background .15s;backdrop-filter:blur(4px)}
+.modal-nav:hover{background:rgba(255,255,255,1)}
 .modal-nav-prev{left:-20px}
 .modal-nav-next{right:-20px}
 
-.modal-brand-header{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #222}
-.modal-profile-pic{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);background:#222;flex-shrink:0}
-.modal-profile-pic-placeholder{width:52px;height:52px;border-radius:50%;background:#2a2a2a;border:2px solid #333;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.modal-brand-header{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #e8e8e8}
+.modal-profile-pic{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);background:#eee;flex-shrink:0}
+.modal-profile-pic-placeholder{width:52px;height:52px;border-radius:50%;background:#f0f0f0;border:2px solid #ddd;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
 .modal-brand-info{display:flex;align-items:center;gap:10px}
-.modal-brand-name{font-size:16px;font-weight:700;color:#fff;text-decoration:none;cursor:pointer}
+.modal-brand-name{font-size:16px;font-weight:700;color:#111;text-decoration:none;cursor:pointer}
 .modal-brand-name:hover{text-decoration:underline}
-.modal-brand-handle{font-size:10px;color:#666;margin-top:2px}
+.modal-brand-handle{font-size:10px;color:#888;margin-top:2px}
 .modal-stats{display:flex;gap:8px;margin-bottom:16px}
-.modal-stat{flex:1;background:#1a1a1a;border-radius:6px;padding:8px;text-align:center}
+.modal-stat{flex:1;background:#f5f5f5;border-radius:6px;padding:8px;text-align:center;border:1px solid #ebebeb}
 .modal-stat-val{font-size:13px;font-weight:700;color:var(--accent)}
-.modal-stat-label{font-size:8px;color:#555;margin-top:2px}
-.modal-avg-stats{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;padding:10px 12px;background:#1a1a1a;border-radius:8px}
+.modal-stat-label{font-size:8px;color:#888;margin-top:2px}
+.modal-avg-stats{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;padding:10px 12px;background:#f5f5f5;border-radius:8px;border:1px solid #ebebeb}
 .modal-avg-item{display:flex;justify-content:space-between;align-items:center}
 .modal-avg-label{font-size:10px;color:#888}
-.modal-avg-val{font-size:12px;font-weight:600;color:#fff}
-.modal-summary{font-size:10px;line-height:1.7;color:#888;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #1a1a1a}
+.modal-avg-val{font-size:12px;font-weight:600;color:#111}
+.modal-summary{font-size:10px;line-height:1.7;color:#666;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #e8e8e8}
 
-.modal-w6h{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #1a1a1a}
-.modal-w6h-item{background:#1a1a1a;border-radius:6px;padding:8px 10px;border-left:3px solid var(--accent)}
+.modal-w6h{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #e8e8e8}
+.modal-w6h-item{background:#f5f5f5;border-radius:6px;padding:8px 10px;border-left:3px solid var(--accent)}
 .modal-w6h-label{font-size:8.5px;font-weight:700;color:var(--accent);margin-bottom:3px}
-.modal-w6h-val{font-size:10px;line-height:1.5;color:#bbb}
+.modal-w6h-val{font-size:10px;line-height:1.5;color:#444}
 
 .modal-kw{display:flex;flex-wrap:wrap;gap:4px}
-.modal-kw-tag{font-size:9px;background:rgba(255,255,255,.08);color:#aaa;padding:3px 8px;border-radius:20px;border:1px solid rgba(255,255,255,.15)}
+.modal-kw-tag{font-size:9px;background:rgba(0,0,0,.05);color:#555;padding:3px 8px;border-radius:20px;border:1px solid rgba(0,0,0,.12)}
 
 /* ── POST GRID (modal) ── */
 .modal-post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:start}
@@ -156,7 +157,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 <div class="brand-grid">
 <div class="brand-card" style="--accent:#b5a48a;--light:#f9f5ef" onclick="openModal(0)">
   <div class="card-top">
-    <span class="card-icon">🐚</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.82787-19/710478281_18206816827353976_2198770280879218295_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=1&_nc_oc=Q6cZ2gHnifmotR-XHd6AnLTPKLaG_AWwBRyPUk2wrVJ1rL-lmzHkzH2xG_iaE-vfDKgJbIk&_nc_ohc=h7YkEoagO3QQ7kNvwGs72LU&_nc_gid=olAKu3ClG8KxCsqI4TkuPA&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af80dbdhr170xEM-AL3qod6afUucxP7zRPSfhEws_Fh-lw&oe=6A477D06&_nc_sid=8b3546" alt="rhode" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🐚</span>
     <div>
       <div class="card-name">rhode</div>
       <div class="card-handle">@rhode</div>
@@ -186,7 +187,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>Drunk Elephant 브랜드가 — 클린 뷰티 지향 프리미엄 스킨케어 소비자를 위한 클린 뷰티 아이콘 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>클린 세럼, 모이스처라이저, 아이크림</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>데일리 루틴, 선물·홀리데이 시즌</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>Sephora·D2C 프리미엄 채널</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>6가지 의심 성분 배제로 클린 뷰티 신뢰 구축</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>형광 패키징 비주얼 + 성분 철학 + 커뮤니티</div></div>
 </div><div class="brand-card" style="--accent:#1a5fa8;--light:#e8f0fb" onclick="openModal(2)">
   <div class="card-top">
-    <span class="card-icon">⚡</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/434310531_955996035960783_971864045901890397_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=1&_nc_oc=Q6cZ2gH-90VG2cRuKPUQ5-fVHiizRrQRIkA8p_zr89zw2OlM-KU3SU3CyIWEcT84kB2mu_U&_nc_ohc=Kzl-aGZxzD8Q7kNvwG7oSx1&_nc_gid=4zEpErEb5JtomMRCBHdzBw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af9VXiCzxfpjte_vVp1t21u3hkJFlgzFgub4S1BZjMYPKg&oe=6A476AAE&_nc_sid=8b3546" alt="medicube" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">⚡</span>
     <div>
       <div class="card-name">medicube</div>
       <div class="card-handle">@medicube_global_official</div>
@@ -201,7 +202,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>medicube 브랜드가 — 기능성 뷰티 디바이스에 관심 있는 글로벌 20–35대 여성을 위한 테크 기반 뷰티 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>Booster Pro X2 디바이스 7가지 모드 + 바닐라 글로우·디오드란트 바디케어</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>아마존 프라임데이·세일 시즌, 여름 신제품 런칭 타이밍</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>Amazon·Pinterest 확장, 글로벌 D2C + 인스타그램 튜토리얼</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>테크놀로지로 가시적 피부 변화를 집에서 구현 — '클리닉 효과 홈케어화'</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>디바이스 튜토리얼 릴스 + 성분 교육 + 여름 달콤 감성 + 이커머스 CTA</div></div>
 </div><div class="brand-card" style="--accent:#8b4513;--light:#faf0e6" onclick="openModal(3)">
   <div class="card-top">
-    <span class="card-icon">🏮</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/467433083_1631491184467987_1238258789841310609_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=1&_nc_oc=Q6cZ2gGzSifv3mbf0X9McWAUlQ-UUKqZcL2HfZbtEBle6TZylatQrYt-T3PTsGOwJHgK-4E&_nc_ohc=wknu7nCSDisQ7kNvwFffN53&_nc_gid=Ar6mZFGL2MtV1CpwbkLl6w&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af_mjCBguTfDZJau4BKBWIlX4LJfGNIKYoLSmPK59VZReQ&oe=6A4788C9&_nc_sid=8b3546" alt="Beauty of Joseon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🏮</span>
     <div>
       <div class="card-name">Beauty of Joseon</div>
       <div class="card-handle">@beautyofjoseon_official</div>
@@ -216,7 +217,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>Beauty of Joseon 브랜드가 — 한방·전통 감성을 선호하는 글로벌 K-뷰티 소비자를 위한 궁중 미학 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>한방 세럼, 선크림, 라이스 스킨케어</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>데일리 루틴, 선케어 시즌</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>Amazon·Sephora·글로벌 이커머스</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>전통 한방 성분의 현대적 해석으로 차별화</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>궁중 미학 비주얼 + 성분 스토리텔링 + 글로벌 UGC</div></div>
 </div><div class="brand-card" style="--accent:#2d2d2d;--light:#f5f5f3" onclick="openModal(4)">
   <div class="card-top">
-    <span class="card-icon">🧪</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/106057453_303292124198034_4955473308947079580_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=1&_nc_oc=Q6cZ2gFIcbGxqS8lEcQC0D4EERxtIlPB-OEqO49vZjMfn87BJcdM9TL-8t86-C6vOHb0Snk&_nc_ohc=YZq2jLxTht8Q7kNvwHydQtA&_nc_gid=z8iBT5ya4u7MtyLPtdkf3A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af8SGVoWOwk7SiWezJV3EtbN86_fCg4b_lGP2h8VD0qchg&oe=6A4787FA&_nc_sid=8b3546" alt="Typology Paris" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🧪</span>
     <div>
       <div class="card-name">Typology Paris</div>
       <div class="card-handle">@typologyparis</div>
@@ -246,7 +247,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>COSRX 브랜드가 — 성분 효능 검증을 원하는 글로벌 K-뷰티 소비자를 위한 검증 성분 베스트셀러 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>달팽이 뮤신 앰플, AHA/BHA 패드, 선크림</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>데일리 루틴, 트러블·안티에이징 케어</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>Amazon·Sephora·Ulta 글로벌 1위</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>검증된 단일 성분 고농도로 확실한 효과</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>성분 집중 교육 + 비포어/애프터 + 글로벌 UGC</div></div>
 </div><div class="brand-card" style="--accent:#8b2fc9;--light:#f5ecff" onclick="openModal(6)">
   <div class="card-top">
-    <span class="card-icon">💎</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.82787-19/625539764_18548112790060073_8565191513628272450_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=105&_nc_oc=Q6cZ2gHX-mWrdLd9srr04apfl4gp9sVvIA0qjh9Z5FJKNA8E_kxymc6xJbfa2dh_l5hs5uk&_nc_ohc=XvLbRHgMsxIQ7kNvwHB8oXM&_nc_gid=4cUcgp_ki7md1J13LrZ5yg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af_XpVqC_CaOVrAobG0WGzel8wMmpyPgZYWXjIYN3-KN8w&oe=6A476997&_nc_sid=8b3546" alt="VT Cosmetics" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">💎</span>
     <div>
       <div class="card-name">VT Cosmetics</div>
       <div class="card-handle">@vtcosmetics_official</div>
@@ -261,7 +262,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>VT Cosmetics 브랜드가 — K-뷰티 팬·국내 20대 트렌드세터·뉴욕 글로벌 크리에이터를 위한 K-뷰티 선두 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>에어클라우드 선스크린(무중력) + 리들샷 헤어라인 + 올데이 앰버서더 콜라보</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>618 세일·올여름 시즌, 앰버서더 발표, VT 크루 2기 모집</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>올리브영(국내) + 뉴욕 타임스퀘어(글로벌) + 글로벌 크리에이터 SNS</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>K-뷰티 글로벌 선두 브랜드로서 존재감 확장, 팬덤 커뮤니티 빌드</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>앰버서더 콜라보 + 세수 챌린지 이벤트 + 타임스퀘어 영상 + 크루 모집</div></div>
 </div><div class="brand-card" style="--accent:#3d7a4a;--light:#e8f5ec" onclick="openModal(7)">
   <div class="card-top">
-    <span class="card-icon">🌿</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.82787-19/656330747_18093245198323775_4034957215969219100_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=1&_nc_oc=Q6cZ2gHOQBkAijo7jAnhLeiLnenADPdbl9cfNxT0a30XUNWTtGFMFef4LebUQLxLI_aiSDM&_nc_ohc=C14GehJjun0Q7kNvwE7rUcj&_nc_gid=24FIgHlV7P3G3wPEZLuDTw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af9UuI3hvYxN_pvM50DfTsITKlCOwQiO7Pdbg858AuaHvA&oe=6A4795A7&_nc_sid=8b3546" alt="ANUA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🌿</span>
     <div>
       <div class="card-name">ANUA</div>
       <div class="card-handle">@anua_global</div>
@@ -276,7 +277,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>ANUA 브랜드가 — 민감성 피부 트러블 고민을 가진 글로벌 20-35대를 위한 자연주의 K-뷰티 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>어성초 토너패드, 클렌징폼, 수분크림</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>데일리 루틴, 트러블 케어 시즌</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>Amazon·Sephora·D2C 글로벌</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>자연 성분으로 진정·트러블 케어 해결</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>클린 감성 비주얼 + 성분 교육 + 리뷰 UGC</div></div>
 </div><div class="brand-card" style="--accent:#1a1a2e;--light:#e8e8f0" onclick="openModal(8)">
   <div class="card-top">
-    <span class="card-icon">⚡</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/461865950_1065540374948240_8065627515465772201_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4zMjAuYzIifQ&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2gEz8Pw1mW5Z8qyebJ_pQ7ibRzRR4zDLAxsrU9gl_e9ieyYDzZRvmyvHNUrKGhBSskw&_nc_ohc=2VaeFQ6Foz4Q7kNvwHrotFH&_nc_gid=_fwSmyw2U1_8h3yhh6UzQg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af_ogeYmKHxlCD6nignGPDN4xn1k8TYpLG3UlCQSq6u4rg&oe=6A4785A6&_nc_sid=8b3546" alt="AXISY" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">⚡</span>
     <div>
       <div class="card-name">AXISY</div>
       <div class="card-handle">@axisy_official</div>
@@ -291,7 +292,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>AXISY 브랜드가 — 트렌디한 비주얼을 원하는 Z세대 글로벌 소비자를 위한 K-뷰티 바디케어 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>바디로션, 스킨케어, 뷰티 디바이스</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>시즌 트렌드, 신제품 런칭</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>인스타그램·틱톡 글로벌</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>트렌디하고 강렬한 비주얼로 Z세대 공략</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>강렬한 비주얼 + 릴스 + 인플루언서 협업</div></div>
 </div><div class="brand-card" style="--accent:#e05a2b;--light:#fdf0eb" onclick="openModal(9)">
   <div class="card-top">
-    <span class="card-icon">🔬</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/279506533_129208672812110_8792848526710855628_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDAwLmMyIn0&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=1&_nc_oc=Q6cZ2gEJDuhaHBW41c_DhdsQ2A3wLi9eoAMsrjml1pY0Di5io0PCdUDJWoFh8k1j1q75i84&_nc_ohc=McqgEeotazsQ7kNvwGhXJji&_nc_gid=0QEGfPYDrIfM6jkg9pbEkw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af_CruXYP1EREsKAnI6SOIYu3V4u8nvAe1NE-uTRtSrR_A&oe=6A476A4F&_nc_sid=8b3546" alt="celimax" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🔬</span>
     <div>
       <div class="card-name">celimax</div>
       <div class="card-handle">@celimax.global</div>
@@ -321,7 +322,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>MISSHA 브랜드가 — 가성비 K-뷰티를 원하는 글로벌 20-35대를 위한 K-뷰티 가성비 대표 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>BB크림, 앰플, 선케어, 다양한 스킨케어</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>데일리 메이크업+스킨케어 루틴</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>글로벌 이커머스 + 한국 오프라인</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>가성비 + 다양한 라인업으로 폭넓은 소비자 공략</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>다양한 제품 소개 + 메이크업 튜토리얼 + 세일 CTA</div></div>
 </div><div class="brand-card" style="--accent:#003087;--light:#e8edf8" onclick="openModal(11)">
   <div class="card-top">
-    <span class="card-icon">🔵</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/470946720_940862870869810_6285643873628188429_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=110&_nc_oc=Q6cZ2gFhWkGaRj5yiJ4RmvatlASf7Jb630rxqProZNLqdtB0up3lgWT9fold55srhhr0p1k&_nc_ohc=y0aZcmP5-t4Q7kNvwFrLy03&_nc_gid=FgrEBXMbhrVPzoZ7BVAu2A&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af_AFsnCkHejg5GOhq9vKUZVazTiZHNIJdGXBl2_DayusA&oe=6A478D13&_nc_sid=8b3546" alt="Dr. Althea" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🔵</span>
     <div>
       <div class="card-name">Dr. Althea</div>
       <div class="card-handle">@dr.altheaglobal</div>
@@ -381,7 +382,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>EQQUAL 브랜드가 — 항산화·글로우 케어를 원하는 비건 뷰티 소비자를 위한 베리 성분 K-뷰티 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>베리 앰플, 토너, 크림</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>데일리 글로우 루틴</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>인스타그램 글로벌</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>베리 성분 항산화로 빛나는 피부</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>베리 감성 비주얼 + 성분 교육 + 비건 철학</div></div>
 </div><div class="brand-card" style="--accent:#4a90d9;--light:#e8f4fd" onclick="openModal(15)">
   <div class="card-top">
-    <span class="card-icon">💊</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.82787-19/588419260_17885049972408453_7589668567555658972_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=109&_nc_oc=Q6cZ2gE0tdRnIl9FHYzjVh_HSG_SIMZTvCo2S-78Sj_Pke6CEdyZSKV_tN2jQkFASGY45tk&_nc_ohc=P_qv_Il2r_0Q7kNvwE7NqzO&_nc_gid=o2kyLdADwypJGH8VbzTVAg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af_GDl4OBvzjKw-dfuPCbMTMyqoxX-xdjxCOPrtk3L8h8w&oe=6A476DBB&_nc_sid=8b3546" alt="rejuall" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">💊</span>
     <div>
       <div class="card-name">rejuall</div>
       <div class="card-handle">@rejuall_official</div>
@@ -396,7 +397,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>rejuall 브랜드가 — 피부 재생·트러블 케어에 관심 있는 글로벌 20-35대를 위한 더마 스킨케어 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>재생 앰플, 필링 패드, 더마 스킨케어</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>데일리 루틴, 트러블 케어 시즌</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>인스타그램 글로벌 채널</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>더마 기반 과학적 피부 재생 솔루션</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>비포어/애프터 + 성분 교육 + UGC</div></div>
 </div><div class="brand-card" style="--accent:#7b5ea7;--light:#f0ebfa" onclick="openModal(16)">
   <div class="card-top">
-    <span class="card-icon">🫧</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/482840109_1168746401547505_8480780385467142395_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby40NjMuYzIifQ&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=101&_nc_oc=Q6cZ2gHqEXkgmFmpg-Ut0eRkUpjPaDmVfzNzlHeTt0HIorCtAG4TTNt0hALSPrnya23q44w&_nc_ohc=_V1CcrYwHhgQ7kNvwGQ7Gdd&_nc_gid=h6YfgyFH5PmyBHB4nqRpew&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af_7cjiD-E9K1xAHmN_nbV6jvgwORbi-71icC8GkIfStMA&oe=6A478470&_nc_sid=8b3546" alt="ILLIYOON" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🫧</span>
     <div>
       <div class="card-name">ILLIYOON</div>
       <div class="card-handle">@illiyoon_official</div>
@@ -411,7 +412,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>ILLIYOON 브랜드가 — 민감성·건성 피부 고민을 가진 20-40대 여성을 위한 세라마이드 바디·스킨케어 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>세라마이드 바디로션, 크림, 스킨케어</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>건조 시즌, 데일리 바디케어 루틴</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>인스타그램 + 아모레퍼시픽 채널</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>세라마이드로 피부 장벽 강화, 민감성 특화</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>순한 감성 비주얼 + 성분 교육 + 루틴 가이드</div></div>
 </div><div class="brand-card" style="--accent:#0066cc;--light:#e8f0fb" onclick="openModal(17)">
   <div class="card-top">
-    <span class="card-icon">🏥</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.82787-19/541511555_17963499386967649_8713876291165611213_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDQ0LmMyIn0&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=101&_nc_oc=Q6cZ2gE6l5vk2wkviM71KLfGVQd8RRqNHesdGgB7Ws5Kbntqep3MpaXX21YmS9_KCGqH2qM&_nc_ohc=MkhSwTQZ47EQ7kNvwH5hrDP&_nc_gid=86dOqPkjkPAQbgyupKbnHw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af9IghKno9RTZ0VRWTDThUBm0VvU3rRANoCK0VLfUlVE0w&oe=6A476C14&_nc_sid=8b3546" alt="MEDITHERAPY" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🏥</span>
     <div>
       <div class="card-name">MEDITHERAPY</div>
       <div class="card-handle">@meditherapy_official_global</div>
@@ -426,7 +427,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>MEDITHERAPY 브랜드가 — 피부 트러블·민감성 고민을 가진 성인 여성을 위한 더마 클리니컬 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>클리니컬 세럼, 선크림, 더마 라인</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>트러블 케어, 시즌 변화기</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>인스타그램 글로벌 채널</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>의료 기반 신뢰성으로 피부 고민 해결</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>클리니컬 비주얼 + 성분 교육 + 전문가 코멘트</div></div>
 </div><div class="brand-card" style="--accent:#2d5a27;--light:#eaf4e8" onclick="openModal(18)">
   <div class="card-top">
-    <span class="card-icon">🧪</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.82787-19/622733724_18151117900434692_6172242526810666951_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby41MDAuYzIifQ&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=108&_nc_oc=Q6cZ2gHleHQ31Uo7dA1r1Gy7zhT2QtuaS-6ihj-0Xv9bpza3Vf88iT6M-CdIvbh4Bh6jHKI&_nc_ohc=jhipfAgADx8Q7kNvwFGFKBT&_nc_gid=a08CSJr9h81smnwiPGwajg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af8yHN7LhC8qw7sq7h7qeTP5jRO9rBIgU9ZScfmLqiAN1w&oe=6A478961&_nc_sid=8b3546" alt="성분에디터" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🧪</span>
     <div>
       <div class="card-name">성분에디터</div>
       <div class="card-handle">@sungbooneditor_official</div>
@@ -486,7 +487,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <div class="card-w6h"><div class="card-w6h-item"><span class="card-w6h-label">누가(Who)</span>AESTURA 브랜드가 — 민감성·배리어 케어를 원하는 영국·유럽 소비자를 위한 아모레퍼시픽 더마 클리니컬 브랜드</div><div class="card-w6h-item"><span class="card-w6h-label">무엇(What)</span>세라마이드 배리어 크림, 선크림, 더마 케어</div><div class="card-w6h-item"><span class="card-w6h-label">언제(When)</span>민감성 피부 데일리 루틴</div><div class="card-w6h-item"><span class="card-w6h-label">어디서(Where)</span>영국·유럽 이커머스 + 인스타그램</div><div class="card-w6h-item"><span class="card-w6h-label">왜(Why)</span>임상 검증 세라마이드로 배리어 강화</div><div class="card-w6h-item"><span class="card-w6h-label">어떻게(How)</span>클리니컬 비주얼 + 성분 신뢰성 + 피부과 추천</div></div>
 </div><div class="brand-card" style="--accent:#4a7c59;--light:#e8f5ee" onclick="openModal(22)">
   <div class="card-top">
-    <span class="card-icon">🌹</span>
+    <img class="card-profile-pic" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.82787-19/652910211_17878879062524544_125392110874663563_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDAwLmMyIn0&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=100&_nc_oc=Q6cZ2gGFN-OPnrfqpuHwQZF78WJEIhx8xhCbjAAsN8MivYahYX5YcSWq8tb-RJrXquCXe2w&_nc_ohc=RP5lUbQu9isQ7kNvwHe48IB&_nc_gid=A_0E-amWOPAYOzuGkD-CKQ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af_vomgNYfGD4V1ocVm5KiZmzTzEwh0QZuw2qQjxhosLIQ&oe=6A47888C&_nc_sid=8b3546" alt="GARDENY 가드니" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🌹</span>
     <div>
       <div class="card-name">GARDENY 가드니</div>
       <div class="card-handle">@gardenyskin</div>

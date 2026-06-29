@@ -25,7 +25,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .main-content{display:flex;flex:1;overflow:hidden}
 
 /* ── OWN BRAND PANEL (좌측 고정) ── */
-.own-brand-panel{width:210px;flex-shrink:0;padding:12px 10px 12px 12px;border-right:1px solid #e5e5e5;overflow-y:auto;background:#f9f7f0}
+.own-brand-panel{width:240px;flex-shrink:0;padding:12px 10px 12px 12px;border-right:1px solid #e5e5e5;overflow-y:auto;background:#f9f7f0}
 .own-brand-panel::-webkit-scrollbar{width:3px}
 .own-brand-panel::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
 .own-brand-panel .own-brand-label{font-size:8px;font-weight:700;color:#d4a800;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
@@ -71,8 +71,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .modal-close:hover{background:#e0e0e0}
 .modal-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.15);color:#333;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:20;transition:background .15s;backdrop-filter:blur(4px)}
 .modal-nav:hover{background:rgba(255,255,255,1)}
-.modal-nav-prev{left:-20px}
-.modal-nav-next{right:-20px}
+.modal-nav-prev{left:16px}
+.modal-nav-next{right:16px}
 
 .modal-brand-header{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #e8e8e8}
 .modal-profile-pic{width:52px;height:52px;border-radius:50%;object-fit:cover;background:#eee;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.10)}
@@ -150,7 +150,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 <div class="topbar">
   <h1>SNS 인사이트 리서쳐</h1>
   <p>24개 브랜드 · 육하원칙 · 감성 키워드 · 최근 게시글</p>
-  <span style="font-size:9px;color:#888;margin-left:auto;white-space:nowrap">최신화 2026.06.29 14:39</span>
+  <span style="font-size:9px;color:#888;margin-left:auto;white-space:nowrap">최신화 2026.06.29 17:05</span>
 </div>
 
 <div class="filter-bar">
@@ -554,10 +554,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 
 <!-- MODAL -->
 <div class="modal-backdrop" id="modal">
+  <button class="modal-nav modal-nav-prev" onclick="navModal(-1)" title="이전 브랜드">&#8592;</button>
+  <button class="modal-nav modal-nav-next" onclick="navModal(1)" title="다음 브랜드">&#8594;</button>
   <div class="modal-box" style="position:relative">
     <button class="modal-close" onclick="closeModal()">✕</button>
-    <button class="modal-nav modal-nav-prev" onclick="navModal(-1)" title="이전 브랜드">&#8592;</button>
-    <button class="modal-nav modal-nav-next" onclick="navModal(1)" title="다음 브랜드">&#8594;</button>
     <div class="modal-left"></div>
     <div class="modal-right"></div>
   </div>

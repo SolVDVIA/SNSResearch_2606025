@@ -170,7 +170,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <h1>SNS 인사이트 리서쳐</h1>
   <p>24개 브랜드 · 육하원칙 · 감성 키워드 · 최근 게시글</p>
   <div style="margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0">
-    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.06.30 13:35</span>
+    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.06.30 13:40</span>
     <button class="update-btn" id="update-btn" onclick="triggerUpdate()">⟳ 지금 업데이트</button>
   </div>
 </div>
@@ -1171,13 +1171,7 @@ async function triggerUpdate() {
   const isLocal = location.protocol === 'http:' &&
     (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
   if (!isLocal) {
-    showUpdateMsg('업데이트 기능은 로컬 서버에서만 작동합니다.
-
-① 터미널에서 실행:
-python3 sns_server.py
-
-② 브라우저에서 접속:
-http://localhost:8765');
+    showUpdateMsg('업데이트 기능은 로컬 서버에서만 작동합니다.\n\n① 터미널에서 실행:\npython3 sns_server.py\n\n② 브라우저에서 접속:\nhttp://localhost:8765');
     return;
   }
 
@@ -1191,10 +1185,7 @@ http://localhost:8765');
   }
 
   if (!serverOk) {
-    showUpdateMsg('로컬 서버가 실행되지 않았습니다.
-
-터미널에서 실행하세요:
-python3 sns_server.py');
+    showUpdateMsg('로컬 서버가 실행되지 않았습니다.\n\n터미널에서 실행하세요:\npython3 sns_server.py');
     return;
   }
 

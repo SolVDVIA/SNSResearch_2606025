@@ -119,12 +119,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 
 .card{background:#fff;overflow:hidden;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.1);position:relative}
 
-/* EMBED */
+/* POST CARD (iframe-free) */
+.post-card{display:block;text-decoration:none;background:#fff;border-radius:8px;padding:10px 12px;box-shadow:0 1px 3px rgba(0,0,0,.08);border:1px solid #ebebeb;transition:box-shadow .15s,border-color .15s;cursor:pointer}
+.post-card:hover{box-shadow:0 3px 10px rgba(0,0,0,.13);border-color:var(--accent,#999)}
+.post-card-header{display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap}
+.post-num{background:var(--accent,#555);color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:8px;flex-shrink:0}
+.post-mtype{font-size:13px;flex-shrink:0}
+.post-date{font-size:9px;color:#bbb;flex:1;min-width:0}
+.post-stats{font-size:9px;color:#999;display:flex;gap:6px;flex-shrink:0}
+.post-cap{font-size:10px;line-height:1.65;color:#444;word-break:break-word;white-space:pre-wrap;max-height:80px;overflow-y:auto}
+.post-cap::-webkit-scrollbar{width:2px}
+.post-cap::-webkit-scrollbar-thumb{background:#ddd}
+
+/* LEGACY EMBED (kept for reference) */
 .embed-wrap{width:100%;height:480px;overflow:hidden;background:#f5f5f5;position:relative}
 .embed-wrap iframe{position:absolute;top:-44px;left:0;width:100%;height:540px;border:none;display:block}
 .embed-num{position:absolute;top:6px;left:6px;background:rgba(0,0,0,.45);color:#fff;font-size:9px;font-weight:600;padding:2px 6px;border-radius:8px;z-index:2;pointer-events:none}
-
-/* CARD BODY */
 .card-body{padding:6px 8px 8px}
 .card-meta{display:flex;justify-content:space-between;margin-bottom:4px}
 .card-date{font-size:9px;color:#bbb}
@@ -170,7 +180,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <h1>SNS 인사이트 리서쳐</h1>
   <p>28개 브랜드 · 육하원칙 · 감성 키워드 · 최근 게시글</p>
   <div style="margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0">
-    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.06.30 16:36</span>
+    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.06.30 16:44</span>
     <button class="update-btn" id="update-btn" onclick="triggerUpdate()">⟳ 지금 업데이트</button>
   </div>
 </div>
@@ -1144,22 +1154,23 @@ function openModal(idx) {
 
   // right panel posts
   const right = modal.querySelector('.modal-right');
+  const MTYPE_ICON = {1:'📷', 2:'🎬', 8:'🖼️'};
   const postsHtml = b.posts.map((p, i) => {
     const [code, mtype, likes, comments, ts, cap] = p;
     const date = new Date(ts * 1000).toLocaleDateString('ko-KR', {year:'numeric',month:'2-digit',day:'2-digit'}).replace(/\. /g,'.').replace(/\.$/,'');
     const likesF = fmtNum(likes);
     const cmtF = fmtNum(comments);
     const capE = cap.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    return `<div class="card">
-      <div class="embed-wrap">
-        <span class="embed-num">${i+1}</span>
-        <iframe src="https://www.instagram.com/p/${code}/embed/" scrolling="no" loading="${i < 6 ? 'eager' : 'lazy'}" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+    const mtypeIcon = MTYPE_ICON[mtype] || '📷';
+    return `<a class="post-card" href="https://www.instagram.com/p/${code}/" target="_blank" rel="noopener">
+      <div class="post-card-header">
+        <span class="post-num">${i+1}</span>
+        <span class="post-mtype">${mtypeIcon}</span>
+        <span class="post-date">${date}</span>
+        <span class="post-stats"><span>❤️ ${likesF}</span><span>💬 ${cmtF}</span></span>
       </div>
-      <div class="card-body">
-        <div class="card-meta"><span class="card-date">${date}</span><span class="card-stats-row"><span>❤️ ${likesF}</span><span>💬 ${cmtF}</span></span></div>
-        <div class="cap">${capE}</div>
-      </div>
-    </div>`;
+      <div class="post-cap">${capE || '<em style="color:#bbb">캡션 없음</em>'}</div>
+    </a>`;
   }).join('');
 
   right.innerHTML = `<div class="modal-post-grid">${postsHtml}</div>`;

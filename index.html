@@ -13,7 +13,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .topbar{background:#fff;color:#111;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-shrink:0;flex-wrap:wrap;border-bottom:1px solid #e5e5e5}
 .topbar h1{font-size:14px;font-weight:700;letter-spacing:-.3px}
 .topbar p{font-size:10px;color:#888}
-.update-btn{margin-left:auto;font-size:10px;padding:5px 12px;border-radius:20px;border:1px solid #d5d5d5;background:#f5f5f5;color:#555;cursor:pointer;white-space:nowrap;transition:all .15s;display:flex;align-items:center;gap:5px}
+.update-btn{font-size:10px;padding:5px 12px;border-radius:20px;border:1px solid #d5d5d5;background:#f5f5f5;color:#555;cursor:pointer;white-space:nowrap;transition:all .15s;display:flex;align-items:center;gap:5px}
 .update-btn:hover{border-color:#999;background:#eee;color:#222}
 .update-btn.running{background:#fff3cd;border-color:#ffc107;color:#856404;cursor:default}
 .update-btn.done{background:#d4edda;border-color:#28a745;color:#155724}
@@ -169,8 +169,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 <div class="topbar">
   <h1>SNS 인사이트 리서쳐</h1>
   <p>24개 브랜드 · 육하원칙 · 감성 키워드 · 최근 게시글</p>
-  <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.06.30 13:29</span>
-  <button class="update-btn" id="update-btn" onclick="triggerUpdate()">⟳ 지금 업데이트</button>
+  <div style="margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0">
+    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.06.30 13:32</span>
+    <button class="update-btn" id="update-btn" onclick="triggerUpdate()">⟳ 지금 업데이트</button>
+  </div>
 </div>
 
 <div class="update-modal" id="update-modal">
@@ -1145,17 +1147,29 @@ function sortGrid(key) {
 const UPDATE_SERVER = 'http://localhost:8765';
 let updatePollTimer = null;
 
+function fetchTimeout(url, opts, ms) {
+  return Promise.race([
+    fetch(url, opts || {}),
+    new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))
+  ]);
+}
+
 async function triggerUpdate() {
   const btn = document.getElementById('update-btn');
   const modal = document.getElementById('update-modal');
   const log = document.getElementById('update-log');
 
-  // 서버 연결 확인
+  // 서버 연결 확인 (2초 타임아웃)
+  let serverOk = false;
   try {
-    const check = await fetch(UPDATE_SERVER + '/status', {signal: AbortSignal.timeout(2000)});
-    if (!check.ok) throw new Error();
-  } catch {
-    alert('로컬 서버가 실행되지 않았습니다.\n\n터미널에서 실행:\npython3 sns_server.py');
+    const check = await fetchTimeout(UPDATE_SERVER + '/status', {}, 2000);
+    serverOk = check.ok;
+  } catch(e) {
+    serverOk = false;
+  }
+
+  if (!serverOk) {
+    alert('로컬 서버가 실행되지 않았습니다.\n\n터미널에서 실행하세요:\npython3 "30_growth/design/05) SNS/01) 케이스 스터디/sns_server.py"');
     return;
   }
 
@@ -1166,9 +1180,9 @@ async function triggerUpdate() {
 ';
 
   try {
-    await fetch(UPDATE_SERVER + '/update', {method: 'POST'});
+    await fetchTimeout(UPDATE_SERVER + '/update', {method: 'POST'}, 5000);
   } catch(e) {
-    log.textContent = '❌ 오류: ' + e.message;
+    log.textContent = '❌ 시작 실패: ' + e.message;
     btn.classList.remove('running');
     btn.textContent = '⟳ 지금 업데이트';
     return;
@@ -1177,7 +1191,7 @@ async function triggerUpdate() {
   // 진행 상황 폴링
   updatePollTimer = setInterval(async () => {
     try {
-      const res = await fetch(UPDATE_SERVER + '/status');
+      const res = await fetchTimeout(UPDATE_SERVER + '/status', {}, 3000);
       const data = await res.json();
       log.textContent = data.log || '';
       log.scrollTop = log.scrollHeight;

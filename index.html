@@ -15,7 +15,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .topbar p{font-size:10px;color:#888}
 
 /* ── FILTER BAR ── */
-.filter-bar{background:#fff;padding:8px 16px;display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0;border-bottom:1px solid #e5e5e5}
+.filter-bar{background:#fff;padding:8px 16px;display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0;border-bottom:1px solid #e5e5e5;align-items:center}
+.sort-group{margin-left:auto;display:flex;gap:4px;align-items:center}
+.sort-label{font-size:10px;color:#aaa;white-space:nowrap}
+.sort-btn{font-size:10px;padding:4px 10px;border-radius:20px;border:1px solid #e0e0e0;background:#fafafa;color:#888;cursor:pointer;white-space:nowrap;transition:all .15s}
+.sort-btn:hover{border-color:#999;color:#333}
+.sort-btn.active{background:#333;color:#fff;border-color:#333;font-weight:700}
 .filter-btn{font-size:10px;padding:5px 12px;border-radius:20px;border:1px solid #d5d5d5;background:#f5f5f5;color:#666;cursor:pointer;transition:all .15s;white-space:nowrap}
 .filter-btn:hover{border-color:#999;color:#222}
 .filter-btn.active{background:var(--btn-accent,#111);color:#fff;border-color:var(--btn-accent,#111);font-weight:700}
@@ -154,11 +159,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 <div class="topbar">
   <h1>SNS 인사이트 리서쳐</h1>
   <p>24개 브랜드 · 육하원칙 · 감성 키워드 · 최근 게시글</p>
-  <span style="font-size:9px;color:#888;margin-left:auto;white-space:nowrap">마지막 업데이트 시기 [최신화] 2026.06.30 10:44</span>
+  <span style="font-size:9px;color:#888;margin-left:auto;white-space:nowrap">마지막 업데이트 시기 [최신화] 2026.06.30 10:53</span>
 </div>
 
 <div class="filter-bar">
-  <button class="filter-reset filter-btn" onclick="closeFilter()" style="--btn-accent:#555">[모두보기]</button>
+  <button class="filter-reset filter-btn" onclick="closeFilter()" style="--btn-accent:#555">모두보기</button>
   <span class="filter-label">비교보기</span>
   <button class="filter-btn" data-key="누가" style="--btn-accent:#e74c3c" onclick="openFilter('누가')">누가</button>
   <button class="filter-btn" data-key="소재" style="--btn-accent:#3498db" onclick="openFilter('소재')">소재</button>
@@ -167,6 +172,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <button class="filter-btn" data-key="목적" style="--btn-accent:#f1c40f" onclick="openFilter('목적')">목적</button>
   <button class="filter-btn" data-key="방식" style="--btn-accent:#9b59b6" onclick="openFilter('방식')">방식</button>
   <button class="filter-btn" data-key="키워드" style="--btn-accent:#1abc9c" onclick="openFilter('키워드')">키워드</button>
+  <div class="sort-group">
+    <span class="sort-label">정렬</span>
+    <button class="sort-btn active" data-sort="followers" onclick="sortGrid('followers')">팔로워순</button>
+    <button class="sort-btn" data-sort="avg_likes" onclick="sortGrid('avg_likes')">좋아요순</button>
+    <button class="sort-btn" data-sort="avg_comments" onclick="sortGrid('avg_comments')">댓글순</button>
+    <button class="sort-btn" data-sort="total_posts" onclick="sortGrid('total_posts')">게시글순</button>
+  </div>
 </div>
 
 <div class="main-content">
@@ -1088,6 +1100,26 @@ function closeFilter() {
   document.querySelector('.filter-reset')?.classList.remove('active');
   document.querySelectorAll('.card-w6h-item').forEach(item => item.style.visibility = '');
   document.querySelectorAll('.card-kw').forEach(kw => kw.style.visibility = '');
+}
+
+// ── SORT ──
+let activeSort = 'followers';
+
+function sortGrid(key) {
+  activeSort = key;
+  document.querySelectorAll('.sort-btn').forEach(b => b.classList.toggle('active', b.dataset.sort === key));
+
+  const grid = document.querySelector('.brand-grid');
+  const cards = Array.from(grid.querySelectorAll('.brand-card'));
+
+  // map card → brand data index (stored in onclick attr)
+  cards.sort((a, b) => {
+    const ai = parseInt(a.getAttribute('onclick').match(/\d+/)[0]);
+    const bi = parseInt(b.getAttribute('onclick').match(/\d+/)[0]);
+    return BRANDS_DATA[bi][key] - BRANDS_DATA[ai][key];
+  });
+
+  cards.forEach(c => grid.appendChild(c));
 }
 </script>
 

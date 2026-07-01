@@ -56,6 +56,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .brand-card.own-brand:hover{background:var(--light)}
 
 .card-top{display:flex;align-items:center;gap:8px}
+.amz-badges{display:flex;flex-direction:column;gap:3px;flex-shrink:0;margin-left:auto}
+.amz-badge{font-size:8px;font-weight:700;padding:2px 6px;border-radius:10px;white-space:nowrap;line-height:1.5}
+.amz-serum{background:#ff6b00;color:#fff}
+.amz-cream{background:#0073cf;color:#fff}
 .card-icon{font-size:18px;line-height:1;flex-shrink:0}
 .card-profile-pic{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#eee;box-shadow:0 2px 6px rgba(0,0,0,.10)}
 .card-name{font-size:12px;font-weight:700;color:#111;line-height:1.3}
@@ -179,7 +183,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <h1>SNS 인사이트 리서쳐</h1>
   <p>28개 브랜드 · 육하원칙 · 감성 키워드 · 최근 게시글</p>
   <div style="margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0">
-    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.07.01 10:16</span>
+    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.07.01 13:02</span>
     <button class="update-btn" id="update-btn" onclick="triggerUpdate()">⟳ 지금 업데이트</button>
   </div>
 </div>
@@ -217,10 +221,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
     <div class="brand-card own-brand" style="--accent:#d4a800;--light:#fffde7" onclick="openModal(0)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/lemonderma_official.jpg" alt="LEMONDERMA 레몬더마" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🍋</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">LEMONDERMA 레몬더마</div>
       <div class="card-handle">@lemonderma_official</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">16.4K</div><div class="card-stat-label">팔로워</div></div>
@@ -236,10 +241,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 <div class="brand-card" style="--accent:#b5a48a;--light:#f9f5ef" onclick="openModal(1)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/rhode.jpg" alt="rhode" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🐚</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">rhode</div>
       <div class="card-handle">@rhode</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">4.9M</div><div class="card-stat-label">팔로워</div></div>
@@ -252,10 +258,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#0070b8;--light:#e8f4fd" onclick="openModal(2)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/larocheposay.jpg" alt="La Roche-Posay" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🩺</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">La Roche-Posay</div>
       <div class="card-handle">@larocheposay</div>
     </div>
+    <div class="amz-badges"><span class="amz-badge amz-cream">🛒 크림 1위</span></div>
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">4.7M</div><div class="card-stat-label">팔로워</div></div>
@@ -268,10 +275,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#ff6b35;--light:#fff3ee" onclick="openModal(3)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/drunkelephant.jpg" alt="Drunk Elephant" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🐘</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">Drunk Elephant</div>
       <div class="card-handle">@drunkelephant</div>
     </div>
+    <div class="amz-badges"><span class="amz-badge amz-serum">🛒 세럼 8위</span></div>
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">2.0M</div><div class="card-stat-label">팔로워</div></div>
@@ -284,10 +292,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#1a5fa8;--light:#e8f0fb" onclick="openModal(4)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/medicube_global_official.jpg" alt="medicube" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">⚡</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">medicube</div>
       <div class="card-handle">@medicube_global_official</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">1.5M</div><div class="card-stat-label">팔로워</div></div>
@@ -300,10 +309,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#8b4513;--light:#faf0e6" onclick="openModal(5)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/beautyofjoseon_official.jpg" alt="Beauty of Joseon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🏮</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">Beauty of Joseon</div>
       <div class="card-handle">@beautyofjoseon_official</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">1.3M</div><div class="card-stat-label">팔로워</div></div>
@@ -316,10 +326,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#2d2d2d;--light:#f5f5f3" onclick="openModal(6)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/typologyparis.jpg" alt="Typology Paris" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🧪</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">Typology Paris</div>
       <div class="card-handle">@typologyparis</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">1.1M</div><div class="card-stat-label">팔로워</div></div>
@@ -332,10 +343,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#2c5f2e;--light:#e8f4e8" onclick="openModal(7)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/cosrx.jpg" alt="COSRX" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🐌</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">COSRX</div>
       <div class="card-handle">@cosrx</div>
     </div>
+    <div class="amz-badges"><span class="amz-badge amz-serum">🛒 세럼 11위</span></div>
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">772.9K</div><div class="card-stat-label">팔로워</div></div>
@@ -348,10 +360,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#8b2fc9;--light:#f5ecff" onclick="openModal(8)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/vtcosmetics_official.jpg" alt="VT Cosmetics" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">💎</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">VT Cosmetics</div>
       <div class="card-handle">@vtcosmetics_official</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">757.3K</div><div class="card-stat-label">팔로워</div></div>
@@ -364,10 +377,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#3d7a4a;--light:#e8f5ec" onclick="openModal(9)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/anua_global.jpg" alt="ANUA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🌿</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">ANUA</div>
       <div class="card-handle">@anua_global</div>
     </div>
+    <div class="amz-badges"><span class="amz-badge amz-serum">🛒 세럼 1위</span><span class="amz-badge amz-cream">🛒 크림 2위</span></div>
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">612.4K</div><div class="card-stat-label">팔로워</div></div>
@@ -380,10 +394,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#2c6e49;--light:#e8f5ee" onclick="openModal(10)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/drjart.jpg" alt="Dr.Jart+" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🧬</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">Dr.Jart+</div>
       <div class="card-handle">@drjart</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">512.5K</div><div class="card-stat-label">팔로워</div></div>
@@ -396,10 +411,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#1a1a2e;--light:#e8e8f0" onclick="openModal(11)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/axisy_official.jpg" alt="AXISY" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">⚡</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">AXISY</div>
       <div class="card-handle">@axisy_official</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">406.3K</div><div class="card-stat-label">팔로워</div></div>
@@ -412,10 +428,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#e05a2b;--light:#fdf0eb" onclick="openModal(12)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/celimax.global.jpg" alt="celimax" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🔬</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">celimax</div>
       <div class="card-handle">@celimax.global</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">398.0K</div><div class="card-stat-label">팔로워</div></div>
@@ -428,10 +445,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#c0392b;--light:#fdecea" onclick="openModal(13)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/missha.official.jpg" alt="MISSHA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🌸</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">MISSHA</div>
       <div class="card-handle">@missha.official</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">355.1K</div><div class="card-stat-label">팔로워</div></div>
@@ -444,10 +462,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#003087;--light:#e8edf8" onclick="openModal(14)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/dr.altheaglobal.jpg" alt="Dr. Althea" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🔵</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">Dr. Althea</div>
       <div class="card-handle">@dr.altheaglobal</div>
     </div>
+    <div class="amz-badges"><span class="amz-badge amz-cream">🛒 크림 4위</span></div>
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">346.5K</div><div class="card-stat-label">팔로워</div></div>
@@ -460,10 +479,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#e8527a;--light:#fce8ef" onclick="openModal(15)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/biodance_official.jpg" alt="BIODANCE" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🧬</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">BIODANCE</div>
       <div class="card-handle">@biodance_official</div>
     </div>
+    <div class="amz-badges"><span class="amz-badge amz-serum">🛒 세럼 5위</span></div>
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">312.2K</div><div class="card-stat-label">팔로워</div></div>
@@ -476,10 +496,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#e67e22;--light:#fef5e7" onclick="openModal(16)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/arencia_global.jpg" alt="ARENCIA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🍊</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">ARENCIA</div>
       <div class="card-handle">@arencia_global</div>
     </div>
+    <div class="amz-badges"><span class="amz-badge amz-serum">🛒 세럼 12위</span></div>
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">278.5K</div><div class="card-stat-label">팔로워</div></div>
@@ -492,10 +513,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#3a7ab5;--light:#e8f3fc" onclick="openModal(17)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/aveneusa.jpg" alt="Avène USA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">💧</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">Avène USA</div>
       <div class="card-handle">@aveneusa</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">229.3K</div><div class="card-stat-label">팔로워</div></div>
@@ -508,10 +530,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#6b3fa0;--light:#f3eefa" onclick="openModal(18)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/eqqualberry_global.jpg" alt="EQQUAL" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🫐</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">EQQUAL</div>
       <div class="card-handle">@eqqualberry_global</div>
     </div>
+    <div class="amz-badges"><span class="amz-badge amz-serum">🛒 세럼 3위</span><span class="amz-badge amz-cream">🛒 크림 16위</span></div>
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">171.9K</div><div class="card-stat-label">팔로워</div></div>
@@ -524,10 +547,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#4a90d9;--light:#e8f4fd" onclick="openModal(19)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/rejuall_official.jpg" alt="rejuall" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">💊</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">rejuall</div>
       <div class="card-handle">@rejuall_official</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">94.2K</div><div class="card-stat-label">팔로워</div></div>
@@ -540,10 +564,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#7b5ea7;--light:#f0ebfa" onclick="openModal(20)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/illiyoon_official.jpg" alt="ILLIYOON" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🫧</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">ILLIYOON</div>
       <div class="card-handle">@illiyoon_official</div>
     </div>
+    <div class="amz-badges"><span class="amz-badge amz-cream">🛒 크림 8위</span></div>
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">79.9K</div><div class="card-stat-label">팔로워</div></div>
@@ -556,10 +581,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#2a2a2a;--light:#f0f0ee" onclick="openModal(21)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/perfumerhlondon.jpg" alt="Perfumer H" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🫧</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">Perfumer H</div>
       <div class="card-handle">@perfumerhlondon</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">72.1K</div><div class="card-stat-label">팔로워</div></div>
@@ -572,10 +598,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#0066cc;--light:#e8f0fb" onclick="openModal(22)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/meditherapy_official_global.jpg" alt="MEDITHERAPY" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🏥</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">MEDITHERAPY</div>
       <div class="card-handle">@meditherapy_official_global</div>
     </div>
+    <div class="amz-badges"><span class="amz-badge amz-serum">🛒 세럼 2위</span></div>
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">66.5K</div><div class="card-stat-label">팔로워</div></div>
@@ -588,10 +615,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#2d5a27;--light:#eaf4e8" onclick="openModal(23)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/sungbooneditor_official.jpg" alt="성분에디터" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🧪</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">성분에디터</div>
       <div class="card-handle">@sungbooneditor_official</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">44.5K</div><div class="card-stat-label">팔로워</div></div>
@@ -604,10 +632,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#3a6b35;--light:#f0f7ef" onclick="openModal(24)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/narka_you.jpg" alt="NARKA 나르카" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🍵</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">NARKA 나르카</div>
       <div class="card-handle">@narka_you</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">31.1K</div><div class="card-stat-label">팔로워</div></div>
@@ -620,10 +649,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#1a1a1a;--light:#f5f5f5" onclick="openModal(25)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/yunjac.official.jpg" alt="YUNJAC 연작" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🖤</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">YUNJAC 연작</div>
       <div class="card-handle">@yunjac.official</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">29.1K</div><div class="card-stat-label">팔로워</div></div>
@@ -636,10 +666,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#7a5c3a;--light:#f5f0e8" onclick="openModal(26)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/sujet_parfums.jpg" alt="Sujet Parfums" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🌾</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">Sujet Parfums</div>
       <div class="card-handle">@sujet_parfums</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">20.8K</div><div class="card-stat-label">팔로워</div></div>
@@ -652,10 +683,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#1565c0;--light:#e3f2fd" onclick="openModal(27)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/aestura_uk.jpg" alt="AESTURA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🩺</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">AESTURA</div>
       <div class="card-handle">@aestura_uk</div>
     </div>
+    <div class="amz-badges"><span class="amz-badge amz-cream">🛒 크림 12위</span></div>
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">5.4K</div><div class="card-stat-label">팔로워</div></div>
@@ -668,10 +700,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 </div><div class="brand-card" style="--accent:#4a7c59;--light:#e8f5ee" onclick="openModal(28)">
   <div class="card-top">
     <img class="card-profile-pic" src="profiles/gardenyskin.jpg" alt="GARDENY 가드니" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="card-icon card-icon-fallback" style="display:none">🌹</span>
-    <div>
+    <div style="flex:1;min-width:0">
       <div class="card-name">GARDENY 가드니</div>
       <div class="card-handle">@gardenyskin</div>
     </div>
+    
   </div>
   <div class="card-stats-row">
     <div class="card-stat-item"><div class="card-stat-val">2.6K</div><div class="card-stat-label">팔로워</div></div>

@@ -179,7 +179,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <h1>SNS 인사이트 리서쳐</h1>
   <p>28개 브랜드 · 육하원칙 · 감성 키워드 · 최근 게시글</p>
   <div style="margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0">
-    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.07.01 10:02</span>
+    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.07.01 10:16</span>
     <button class="update-btn" id="update-btn" onclick="triggerUpdate()">⟳ 지금 업데이트</button>
   </div>
 </div>
@@ -1163,7 +1163,6 @@ function openModal(idx) {
       <div class="post-embed-wrap">
         <span class="post-num-badge">${i+1}</span>
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/${code}/" data-instgrm-version="14" style="background:#fff;border:0;margin:0;max-width:100%;padding:0;width:100%">
-          <a href="https://www.instagram.com/p/${code}/" target="_blank">게시글 로딩 중...</a>
         </blockquote>
       </div>
       <div class="post-card-body">
@@ -1185,6 +1184,19 @@ function openModal(idx) {
   } else if (window.instgrm) {
     window.instgrm.Embeds.process();
   }
+
+  // embed.js가 생성한 iframe 헤더(~55px) 숨기기
+  const obs = new MutationObserver(() => {
+    right.querySelectorAll('.post-embed-wrap iframe').forEach(f => {
+      if (!f.dataset.hh) {
+        f.dataset.hh = '1';
+        f.style.cssText += ';margin-top:-55px;position:relative;';
+        f.parentElement.style.overflow = 'hidden';
+      }
+    });
+  });
+  obs.observe(right, {childList: true, subtree: true});
+  setTimeout(() => obs.disconnect(), 15000);
 
   // set accent CSS var on modal-box
   modal.querySelector('.modal-box').style.setProperty('--accent', b.accent);

@@ -119,11 +119,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 
 .card{background:#fff;overflow:hidden;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.1);position:relative}
 
-/* POST CARD (iframe embed) */
-.post-card{display:block;text-decoration:none;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08);border:1px solid #ebebeb;position:relative}
-.post-card:hover{box-shadow:0 3px 10px rgba(0,0,0,.13)}
-.post-iframe-wrap{position:relative;width:100%;height:380px;overflow:hidden;background:#f5f5f5}
-.post-iframe-wrap iframe{position:absolute;top:-55px;left:-1px;width:calc(100% + 2px);height:500px;border:none;display:block}
+/* POST CARD (Instagram embed) */
+.post-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08);border:1px solid #ebebeb;position:relative}
+.post-embed-wrap{position:relative;overflow:hidden;background:#f5f5f5;min-height:200px}
+.post-embed-wrap .instagram-media{margin:0 !important;max-width:100% !important;width:100% !important;min-width:0 !important}
+.post-embed-wrap iframe{max-width:100% !important;width:100% !important}
 .post-num-badge{position:absolute;top:6px;left:6px;background:var(--accent,#555);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px;z-index:10;pointer-events:none;line-height:1.5}
 .post-card-body{padding:7px 9px 8px}
 .post-card-stats{font-size:9px;color:#888;display:flex;gap:6px;margin-bottom:3px}
@@ -169,7 +169,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   .modal-box{flex-direction:column;min-height:auto}
   .modal-left{width:100%;max-height:50vh}
   .modal-post-grid{grid-template-columns:repeat(2,1fr)}
-  .post-iframe-wrap{height:300px}
   .modal-close{top:16px;right:16px}
   .fv-grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -180,7 +179,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <h1>SNS 인사이트 리서쳐</h1>
   <p>28개 브랜드 · 육하원칙 · 감성 키워드 · 최근 게시글</p>
   <div style="margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0">
-    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.07.01 09:27</span>
+    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.07.01 10:02</span>
     <button class="update-btn" id="update-btn" onclick="triggerUpdate()">⟳ 지금 업데이트</button>
   </div>
 </div>
@@ -1161,9 +1160,11 @@ function openModal(idx) {
     const cmtF = fmtNum(comments);
     const capE = cap.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     return `<div class="post-card">
-      <div class="post-iframe-wrap">
-        <iframe src="https://www.instagram.com/p/${code}/embed/" loading="lazy" scrolling="no" allowtransparency="true" frameborder="0"></iframe>
+      <div class="post-embed-wrap">
         <span class="post-num-badge">${i+1}</span>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/${code}/" data-instgrm-version="14" style="background:#fff;border:0;margin:0;max-width:100%;padding:0;width:100%">
+          <a href="https://www.instagram.com/p/${code}/" target="_blank">게시글 로딩 중...</a>
+        </blockquote>
       </div>
       <div class="post-card-body">
         <div class="post-card-stats"><span>❤️ ${likesF}</span><span>💬 ${cmtF}</span><span class="post-date">${date}</span></div>
@@ -1173,6 +1174,17 @@ function openModal(idx) {
   }).join('');
 
   right.innerHTML = `<div class="modal-post-grid">${postsHtml}</div>`;
+
+  // Instagram embed.js 로드 (최초 1회) 또는 재처리
+  if (!window._igEmbedLoaded) {
+    window._igEmbedLoaded = true;
+    const s = document.createElement('script');
+    s.src = 'https://www.instagram.com/embed.js';
+    s.async = true;
+    document.body.appendChild(s);
+  } else if (window.instgrm) {
+    window.instgrm.Embeds.process();
+  }
 
   // set accent CSS var on modal-box
   modal.querySelector('.modal-box').style.setProperty('--accent', b.accent);

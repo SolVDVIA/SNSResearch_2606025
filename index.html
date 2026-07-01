@@ -115,17 +115,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .modal-kw-tag{font-size:9px;background:rgba(0,0,0,.05);color:#555;padding:3px 8px;border-radius:20px;border:1px solid rgba(0,0,0,.12)}
 
 /* ── POST GRID (modal) ── */
-.modal-post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:start}
+.modal-post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:start}
 
 .card{background:#fff;overflow:hidden;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.1);position:relative}
 
-/* POST CARD */
-.post-card{display:block;text-decoration:none;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08);border:1px solid #ebebeb;transition:box-shadow .15s,border-color .15s;cursor:pointer}
-.post-card:hover{box-shadow:0 3px 10px rgba(0,0,0,.13);border-color:var(--accent,#999)}
-.post-thumb-wrap{position:relative;width:100%;padding-bottom:100%;background:#f0f0f0;overflow:hidden}
-.post-thumb-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.post-thumb-badge{position:absolute;top:5px;left:5px;background:var(--accent,#555);color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:8px;z-index:2;line-height:1.4}
-.post-thumb-type{position:absolute;top:5px;right:5px;font-size:13px;z-index:2;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
+/* POST CARD (iframe embed) */
+.post-card{display:block;text-decoration:none;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08);border:1px solid #ebebeb;position:relative}
+.post-card:hover{box-shadow:0 3px 10px rgba(0,0,0,.13)}
+.post-iframe-wrap{position:relative;width:100%;height:340px;overflow:hidden;background:#f5f5f5}
+.post-iframe-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;display:block}
+.post-num-badge{position:absolute;top:6px;left:6px;background:var(--accent,#555);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px;z-index:10;pointer-events:none;line-height:1.5}
 .post-card-body{padding:7px 9px 8px}
 .post-card-stats{font-size:9px;color:#888;display:flex;gap:6px;margin-bottom:3px}
 .post-date{font-size:9px;color:#bbb}
@@ -169,7 +168,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   .modal-backdrop{padding:8px}
   .modal-box{flex-direction:column;min-height:auto}
   .modal-left{width:100%;max-height:50vh}
-  .modal-post-grid{grid-template-columns:repeat(1,1fr)}
+  .modal-post-grid{grid-template-columns:repeat(2,1fr)}
+  .post-iframe-wrap{height:260px}
   .modal-close{top:16px;right:16px}
   .fv-grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -180,7 +180,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <h1>SNS 인사이트 리서쳐</h1>
   <p>28개 브랜드 · 육하원칙 · 감성 키워드 · 최근 게시글</p>
   <div style="margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0">
-    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.07.01 09:02</span>
+    <span id="last-updated-label" style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.07.01 09:08</span>
     <button class="update-btn" id="update-btn" onclick="triggerUpdate()">⟳ 지금 업데이트</button>
   </div>
 </div>
@@ -1154,25 +1154,22 @@ function openModal(idx) {
 
   // right panel posts
   const right = modal.querySelector('.modal-right');
-  const MTYPE_ICON = {1:'', 2:'🎬', 8:'🖼️'};
   const postsHtml = b.posts.map((p, i) => {
     const [code, mtype, likes, comments, ts, cap] = p;
     const date = new Date(ts * 1000).toLocaleDateString('ko-KR', {year:'numeric',month:'2-digit',day:'2-digit'}).replace(/\. /g,'.').replace(/\.$/,'');
     const likesF = fmtNum(likes);
     const cmtF = fmtNum(comments);
     const capE = cap.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    const mtypeIcon = MTYPE_ICON[mtype] || '';
-    return `<a class="post-card" href="https://www.instagram.com/p/${code}/" target="_blank" rel="noopener">
-      <div class="post-thumb-wrap">
-        <img src="https://www.instagram.com/p/${code}/media/?size=l" loading="lazy" alt="" onerror="this.parentElement.style.paddingBottom='40px';this.style.display='none'">
-        <span class="post-thumb-badge">${i+1}</span>
-        ${mtypeIcon ? `<span class="post-thumb-type">${mtypeIcon}</span>` : ''}
+    return `<div class="post-card">
+      <div class="post-iframe-wrap">
+        <iframe src="https://www.instagram.com/p/${code}/embed/" loading="lazy" scrolling="no" allowtransparency="true" frameborder="0"></iframe>
+        <span class="post-num-badge">${i+1}</span>
       </div>
       <div class="post-card-body">
         <div class="post-card-stats"><span>❤️ ${likesF}</span><span>💬 ${cmtF}</span><span class="post-date">${date}</span></div>
         <div class="post-cap">${capE || '<em style="color:#bbb">캡션 없음</em>'}</div>
       </div>
-    </a>`;
+    </div>`;
   }).join('');
 
   right.innerHTML = `<div class="modal-post-grid">${postsHtml}</div>`;

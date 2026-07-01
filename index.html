@@ -186,7 +186,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <h1>SNS 인사이트 리서쳐</h1>
   <p>28개 브랜드 · 육하원칙 · 감성 키워드 · 최근 게시글</p>
   <div style="margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0">
-    <span style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.07.01 14:58 | 아마존 판매량 순위 기준</span>
+    <span style="font-size:9px;color:#888;white-space:nowrap">마지막 업데이트 시기 2026.07.01 21:08 | 아마존 판매량 순위 기준</span>
   </div>
 </div>
 
@@ -211,8 +211,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
   <button class="filter-btn" data-key="솔큐레이팅" style="--btn-accent:#e91e8c" onclick="openFilter('솔큐레이팅')">✦ 솔큐레이팅</button>
   <div class="sort-group">
     <span class="sort-label">정렬</span>
-    <button class="sort-btn" data-sort="amazon_rank" onclick="sortGrid('amazon_rank')" style="background:#fff3e0;border-color:#ffb74d;color:#e65100;font-weight:700">🛒 판매순위</button>
-    <button class="sort-btn active" data-sort="followers" onclick="sortGrid('followers')">팔로워순</button>
+    <button class="sort-btn active" data-sort="amazon_rank" onclick="sortGrid('amazon_rank')">판매순위</button>
+    <button class="sort-btn" data-sort="followers" onclick="sortGrid('followers')">팔로워순</button>
     <button class="sort-btn" data-sort="avg_likes" onclick="sortGrid('avg_likes')">좋아요순</button>
     <button class="sort-btn" data-sort="avg_comments" onclick="sortGrid('avg_comments')">댓글순</button>
     <button class="sort-btn" data-sort="total_posts" onclick="sortGrid('total_posts')">게시글순</button>
@@ -1385,12 +1385,17 @@ function closeFilter() {
 }
 
 // ── SORT ──
-let activeSort = 'followers';
+let activeSort = 'amazon_rank';
 
 function getBestRank(b) {
   const ranks = b.amazon_ranks || [];
   if (!ranks.length) return Infinity;
   return Math.min(...ranks.map(r => r.rank));
+}
+
+function getCatCount(b) {
+  const cats = new Set((b.amazon_ranks || []).map(r => r.cat));
+  return cats.size;
 }
 
 function sortGrid(key) {
@@ -1407,17 +1412,23 @@ function sortGrid(key) {
 
     if (key === 'amazon_rank') {
       const ar = getBestRank(ad), br = getBestRank(bd);
-      // 순위 없는 브랜드는 뒤로, 있는 브랜드는 순위 낮을수록(숫자 작을수록) 앞
       if (ar === Infinity && br === Infinity) return bd.followers - ad.followers;
       if (ar === Infinity) return 1;
       if (br === Infinity) return -1;
-      return ar - br;
+      if (ar !== br) return ar - br;
+      // 동점: 더 많은 카테고리에 랭크된 브랜드 우선
+      const ac = getCatCount(ad), bc = getCatCount(bd);
+      if (ac !== bc) return bc - ac;
+      return bd.followers - ad.followers;
     }
     return bd[key] - ad[key];
   });
 
   cards.forEach(c => grid.appendChild(c));
 }
+
+// 페이지 로드 시 판매순위로 초기 정렬
+window.addEventListener('DOMContentLoaded', () => sortGrid('amazon_rank'));
 
 // ── 실시간 업데이트 ──
 const UPDATE_SERVER = 'http://localhost:8765';
